@@ -1,0 +1,159 @@
+# Local Transcription System Configuration
+# ==========================================
+
+# Application settings
+app:
+  name: "Local Transcription System"
+  version: "1.0.0"
+  language: "en"
+  theme: "system"  # system, light, dark
+
+# Transcription settings
+transcription:
+  # Whisper model size: tiny, base, small, medium, large, large-v2, large-v3
+  model_size: "base"
+
+  # Device for inference: auto, cpu, cuda
+  device: "auto"
+
+  # Default language (null for auto-detect)
+  default_language: null
+
+  # Enable speaker diarization by default
+  enable_diarization: true
+
+  # Word timestamps for more precise alignment
+  word_timestamps: true
+
+  # Initial prompt to guide transcription (optional)
+  initial_prompt: ""
+
+  # Temperature for sampling (0 = deterministic)
+  temperature: 0.0
+
+# Audio settings
+audio:
+  # Sample rate for processing
+  sample_rate: 16000
+
+  # Supported formats
+  supported_formats:
+    - ".wav"
+    - ".mp3"
+    - ".m4a"
+    - ".flac"
+    - ".ogg"
+    - ".webm"
+    - ".mp4"
+
+  # Playback settings
+  playback:
+    default_rate: 1.0
+    available_rates:
+      - 0.5
+      - 0.75
+      - 1.0
+      - 1.25
+      - 1.5
+      - 2.0
+
+# Batch processing settings
+batch:
+  # Maximum concurrent workers
+  max_workers: 2
+
+  # Output directory for results
+  output_directory: "./outputs/batch_results"
+
+  # Auto-export format
+  export_format: "json"
+
+# Export settings
+export:
+  # Default export format
+  default_format: "json"
+
+  # Available formats
+  formats:
+    - json
+    - txt
+    - srt
+    - vtt
+    - csv
+
+  # Include metadata in exports
+  include_metadata: true
+
+  # Timestamp format for SRT/VTT
+  timestamp_format: "HH:MM:SS,mmm"
+
+# Search and indexing settings
+search:
+  # Index directory
+  index_directory: "~/.transcription_index"
+
+  # Enable full-text search
+  enable_fulltext: true
+
+  # Maximum search results
+  max_results: 50
+
+# Plugin settings
+plugins:
+  # Plugin directories
+  directories:
+    - "./plugins"
+    - "~/.transcription_plugins"
+
+  # Auto-load plugins on startup
+  auto_load: true
+
+  # Enabled plugins list
+  enabled: []
+
+# UI settings
+ui:
+  # Window size
+  window:
+    width: 1200
+    height: 800
+    maximized: false
+
+  # Show search panel on startup
+  show_search_panel: true
+
+  # Font settings
+  font:
+    family: "default"
+    size: 10
+
+  # Color scheme for segments
+  colors:
+    edited: "#4CAF50"
+    low_confidence: "#FF9800"
+    search_highlight: "#FFF9C4"
+
+  # Auto-save interval (seconds, 0 to disable)
+  auto_save_interval: 300
+
+# Logging settings
+logging:
+  # Log level: DEBUG, INFO, WARNING, ERROR
+  level: "INFO"
+
+  # Log file path (null for no file logging)
+  file: null
+
+  # Maximum log file size (MB)
+  max_size: 10
+
+# Keyboard shortcuts
+shortcuts:
+  open: "Ctrl+O"
+  save: "Ctrl+S"
+  transcribe: "Ctrl+T"
+  search: "Ctrl+F"
+  next_segment: "Ctrl+Down"
+  prev_segment: "Ctrl+Up"
+  play_segment: "Space"
+  stop_playback: "Escape"
